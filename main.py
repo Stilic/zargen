@@ -2,11 +2,12 @@ import markdown
 from glob import glob
 from pathlib import Path
 import os
+from shutil import rmtree
 
 CONTENT_PATH = "./docs"
 DIST_PATH = "./_site"
-if not os.path.isdir(DIST_PATH):
-    os.mkdir(DIST_PATH)
+rmtree(DIST_PATH)
+os.mkdir(DIST_PATH)
 os.chdir(CONTENT_PATH)
 
 for file in glob("./**/*.md", recursive=True):
