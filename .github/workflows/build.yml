@@ -28,5 +28,5 @@ jobs:
         run: pyinstaller main.py --name zargen --onefile
       - uses: actions/upload-artifact@v2
         with:
-          name: Release binary
+          name: Release binary for ${{ matrix.os }}
           path: dist/*
