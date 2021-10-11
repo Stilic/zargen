@@ -1,8 +1,5 @@
-print(
-    """Zargen v1.0.0 ALPHA
-Starting..."""
-)
+print("Zargen v1.0.0 ALPHA")
 
-import zargen.generate
+from zargen.zargen import run
 
-zargen.generate.generate()
+run()

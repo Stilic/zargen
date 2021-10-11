@@ -1,2 +1,2 @@
-class BadConfigurationError(Exception):
-    isCustom = True
+def error(msg):
+    return "ERROR: " + msg

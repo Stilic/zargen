@@ -8,12 +8,10 @@ from shutil import rmtree, copyfile
 
 import markdown
 import yaml
-from .utils import BadConfigurationError
+from .utils import error
 
-
-def generate():
+def run():
     """Generates the content for the final site."""
-    print("Generating the content...")
     try:
         config = yaml.load(open("_config.yml", "r").read(), Loader=yaml.FullLoader)
     except:
@@ -22,14 +20,16 @@ def generate():
             "out_path": "./_site",
         }
     if not os.path.isdir(config["content_path"]):
-        raise BadConfigurationError(
-            "The content directory '{0}' doesn't exist.".format(config["content_path"])
-        )
+        print(
+            error("The content directory '{0}' doesn't exist."
+            .format(config["content_path"])))
+        os._exit(1)
     if os.path.isdir(config["out_path"]):
         rmtree(config["out_path"])
     os.mkdir(config["out_path"])
     os.chdir(config["content_path"])
 
+    print("Generating the content...")
     files_counter = 0
     for file in glob("./**/*", recursive=True):
         files_counter += 1
