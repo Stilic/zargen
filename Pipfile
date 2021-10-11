@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+markdown = "*"
+pyyaml = "*"
+
+[dev-packages]
+pyinstaller = "*"
+
+[scripts]
+buile = "pyinstaller main.py --name zargen --onefile"
+
+[requires]
+python_version = "3.9"
